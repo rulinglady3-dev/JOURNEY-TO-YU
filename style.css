@@ -1057,3 +1057,48 @@ body{
     transform:scale(1.08);
 
 }
+/*==========================
+        FIND GAME
+==========================*/
+
+#findArea{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+}
+
+.findObject{
+
+    position:absolute;
+
+    font-size:60px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:.3s;
+
+    z-index:100;
+
+    filter:drop-shadow(0 0 12px white);
+
+}
+
+.findObject:hover{
+
+    transform:scale(1.2);
+
+}
+
+#findTargets span{
+
+    transition:.3s;
+
+}
