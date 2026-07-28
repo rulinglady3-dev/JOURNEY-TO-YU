@@ -1123,6 +1123,12 @@ function animate(){
     
     updateMemoryOrbs();
 
+    if(currentScene === 5){
+
+    createFindGame();
+
+}
+
 }
 
 animate();
