@@ -3,7 +3,6 @@
 ==================================================*/
 
 let findStarted = false;
-
 let foundCount = 0;
 
 const findItems = [
@@ -24,13 +23,12 @@ function createFindGame(){
 
     if(findStarted) return;
 
-    findStarted = true;
-
-    foundCount = 0;
-
     const area = document.getElementById("findArea");
 
     if(!area) return;
+
+    findStarted = true;
+    foundCount = 0;
 
     area.innerHTML = "";
 
@@ -46,18 +44,30 @@ function createFindGame(){
 
         item.style.top = obj.y + "px";
 
-        item.onclick = ()=>collectItem(item,obj);
+        item.addEventListener("click",()=>{
+
+            collectItem(item,obj);
+
+        });
 
         area.appendChild(item);
 
     });
-  function collectItem(item,obj){
+
+}
+
+function collectItem(item,obj){
+
+    if(item.dataset.collected === "true") return;
+
+    item.dataset.collected = "true";
 
     item.style.pointerEvents = "none";
 
     item.style.transition = ".35s";
 
-    item.style.transform = "scale(2) rotate(360deg)";
+    item.style.transform =
+    "scale(2) rotate(360deg)";
 
     item.style.opacity = "0";
 
@@ -65,7 +75,9 @@ function createFindGame(){
 
     const target = document.getElementById(
 
-        "target" + obj.id.charAt(0).toUpperCase() + obj.id.slice(1)
+        "target" +
+        obj.id.charAt(0).toUpperCase() +
+        obj.id.slice(1)
 
     );
 
@@ -73,7 +85,8 @@ function createFindGame(){
 
         target.style.opacity = ".25";
 
-        target.style.transform = "scale(.8)";
+        target.style.transform =
+        "scale(.8)";
 
     }
 
@@ -89,16 +102,10 @@ function createFindGame(){
 
             findStarted = false;
 
-            if(typeof showScene === "function"){
-
-                showScene(6);
-
-            }
+            showScene(6);
 
         },1000);
 
     }
-
-}
 
 }
