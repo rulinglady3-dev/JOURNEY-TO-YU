@@ -1,16 +1,20 @@
 /* =================================
-           ONE LAST HUG
+        ONE LAST HUG - CATCH GAME
 ================================= */
 
 let hugStarted = false;
 
 let hugPlayerX = 0;
 
+let hugYuX = 0;
+
 let hugMoveLeft = false;
 
 let hugMoveRight = false;
 
-const hugPlayerSpeed = 9;
+const hugPlayerSpeed = 11;
+
+const hugYuSpeed = 5;
 
 
 /* Oyunu başlat */
@@ -23,16 +27,39 @@ function startHugGame(){
 
     const player = document.getElementById("hugYou");
 
-    if(!player) return;
+    const yu = document.getElementById("hugYu");
 
-    hugPlayerX = window.innerWidth * 0.15;
+    if(!player || !yu) return;
 
-    player.style.left = hugPlayerX + "px";
+
+    /* Oyuncu soldan başlar */
+
+    hugPlayerX = window.innerWidth * 0.12;
+
+
+    /* Kaçan kalp sağdan başlar */
+
+    hugYuX = window.innerWidth * 0.82;
+
+
+    player.style.left =
+
+    hugPlayerX + "px";
+
+
+    yu.style.left =
+
+    hugYuX + "px";
+
+
+    yu.style.right =
+
+    "auto";
 
 }
 
 
-/* Oyuncuyu hareket ettir */
+/* Oyunu güncelle */
 
 function updateHugGame(){
 
@@ -40,55 +67,76 @@ function updateHugGame(){
 
     startHugGame();
 
-    const player = document.getElementById("hugYou");
 
-    const yu = document.getElementById("hugYu");
+    const player =
+
+    document.getElementById("hugYou");
+
+
+    const yu =
+
+    document.getElementById("hugYu");
+
 
     if(!player || !yu) return;
 
 
+    /* Oyuncunun hareketi */
+
     if(hugMoveLeft){
 
-        hugPlayerX -= hugPlayerSpeed;
+        hugPlayerX -=
+
+        hugPlayerSpeed;
 
     }
 
 
     if(hugMoveRight){
 
-        hugPlayerX += hugPlayerSpeed;
+        hugPlayerX +=
+
+        hugPlayerSpeed;
 
     }
 
 
-    /* Ekranın dışına çıkmasın */
+    /* Oyuncu ekran dışına çıkmasın */
 
-    if(hugPlayerX < 50){
+    if(hugPlayerX < 55){
 
-        hugPlayerX = 50;
+        hugPlayerX = 55;
 
     }
 
 
-    if(hugPlayerX > window.innerWidth - 50){
+    if(
+
+    hugPlayerX >
+
+    window.innerWidth - 55
+
+    ){
 
         hugPlayerX =
-        window.innerWidth - 50;
+
+        window.innerWidth - 55;
 
     }
 
 
     player.style.left =
+
     hugPlayerX + "px";
 
 
-    /* Hareket ederken eğilsin */
+    /* Oyuncu hareket ederken eğilsin */
 
     if(hugMoveLeft){
 
         player.style.transform =
 
-        "rotate(-10deg) scale(1.08)";
+        "rotate(-10deg) scale(1.1)";
 
     }
 
@@ -96,7 +144,7 @@ function updateHugGame(){
 
         player.style.transform =
 
-        "rotate(10deg) scale(1.08)";
+        "rotate(10deg) scale(1.1)";
 
     }
 
@@ -109,30 +157,103 @@ function updateHugGame(){
     }
 
 
-    /* İki kalp birbirine yaklaşınca */
-
-    const playerBox =
-
-    player.getBoundingClientRect();
-
-
-    const yuBox =
-
-    yu.getBoundingClientRect();
+    /* =================================
+            KAÇAN KALP
+    ================================= */
 
 
     const distance =
 
-    Math.abs(
+    hugPlayerX -
 
-        playerBox.left -
-
-        yuBox.left
-
-    );
+    hugYuX;
 
 
-    if(distance < 100){
+    const absoluteDistance =
+
+    Math.abs(distance);
+
+
+    /* Çok yaklaşınca kalp kaçar */
+
+    if(absoluteDistance < 300){
+
+        if(distance < 0){
+
+            /* Oyuncu soldaysa
+            kaçan kalp sağa gider */
+
+            hugYuX +=
+
+            hugYuSpeed;
+
+        }
+
+        else{
+
+            /* Oyuncu sağdaysa
+            kaçan kalp sola gider */
+
+            hugYuX -=
+
+            hugYuSpeed;
+
+        }
+
+    }
+
+
+    /* Kaçan kalp ekran dışına çıkmasın */
+
+    if(hugYuX < 55){
+
+        hugYuX = 55;
+
+    }
+
+
+    if(
+
+    hugYuX >
+
+    window.innerWidth - 55
+
+    ){
+
+        hugYuX =
+
+        window.innerWidth - 55;
+
+    }
+
+
+    yu.style.left =
+
+    hugYuX + "px";
+
+
+    /* Kaçarken eğilsin */
+
+    if(distance < 0){
+
+        yu.style.transform =
+
+        "rotate(10deg) scale(1.1)";
+
+    }
+
+    else{
+
+        yu.style.transform =
+
+        "rotate(-10deg) scale(1.1)";
+
+    }
+
+
+    /* Yakalanınca */
+
+    if(absoluteDistance < 70){
 
         finishHugGame();
 
@@ -141,7 +262,9 @@ function updateHugGame(){
 }
 
 
-/* Sarılma */
+/* =================================
+            SARILMA
+================================= */
 
 function finishHugGame(){
 
@@ -177,6 +300,17 @@ function finishHugGame(){
     );
 
 
+    if(text){
+
+        text.textContent =
+
+        "You finally caught me 🤍";
+
+    }
+
+
+    /* İki kalbi birbirine yaklaştır */
+
     if(player){
 
         player.style.transition =
@@ -195,15 +329,6 @@ function finishHugGame(){
     }
 
 
-    if(text){
-
-        text.textContent =
-
-        "You found me 🤍";
-
-    }
-
-
     setTimeout(()=>{
 
         showScene(7);
@@ -213,7 +338,9 @@ function finishHugGame(){
 }
 
 
-/* Klavye kontrolleri */
+/* =================================
+          KLAVYE KONTROLLERİ
+================================= */
 
 window.addEventListener(
 
