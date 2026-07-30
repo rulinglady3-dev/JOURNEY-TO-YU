@@ -1077,23 +1077,30 @@ body{
 
     position:absolute;
 
-    font-size:60px;
+    font-size:42px;
 
     cursor:pointer;
 
     user-select:none;
 
-    transition:.3s;
+    opacity:.55;
 
-    z-index:100;
+    filter:
+    drop-shadow(0 0 7px rgba(255,255,255,.45));
 
-    filter:drop-shadow(0 0 12px white);
+    transition:
+    transform .3s,
+    opacity .3s;
+
+    z-index:20;
 
 }
 
 .findObject:hover{
 
-    transform:scale(1.2);
+    opacity:1;
+
+    transform:scale(1.15);
 
 }
 
