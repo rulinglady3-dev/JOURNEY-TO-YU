@@ -1429,5 +1429,188 @@ body{
         0 0 14px white
     );
 }
+/* =================================
+           ONE LAST HUG
+================================= */
 
+#hugGame{
+
+    position:relative;
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    background:
+
+    radial-gradient(
+        circle at 50% 65%,
+        rgba(255,80,180,.18),
+        transparent 40%
+    );
+
+}
+
+
+/* Başlık */
+
+#hugTitle{
+
+    position:absolute;
+
+    top:45px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    margin:0;
+
+    color:white;
+
+    font-size:46px;
+
+    text-shadow:
+
+    0 0 12px #ff8fda,
+
+    0 0 35px #a75cff;
+
+    z-index:10;
+
+}
+
+
+/* Açıklama */
+
+#hugText{
+
+    position:absolute;
+
+    top:110px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    margin:0;
+
+    color:
+
+    rgba(255,255,255,.8);
+
+    font-size:20px;
+
+    z-index:10;
+
+}
+
+
+/* Oyun alanı */
+
+#hugArea{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+}
+
+
+/* Hareket eden kalp */
+
+#hugYou{
+
+    position:absolute;
+
+    left:15%;
+
+    bottom:18%;
+
+    font-size:90px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    filter:
+
+    drop-shadow(
+        0 0 25px
+        deeppink
+    );
+
+    transition:
+
+    transform .2s;
+
+    z-index:20;
+
+}
+
+
+/* Bekleyen kalp */
+
+#hugYu{
+
+    position:absolute;
+
+    right:15%;
+
+    bottom:18%;
+
+    font-size:90px;
+
+    user-select:none;
+
+    filter:
+
+    drop-shadow(
+        0 0 25px
+        white
+    );
+
+    animation:
+
+    hugWaiting 1.3s ease-in-out infinite;
+
+    z-index:20;
+
+}
+
+
+/* Bekleyen kalbin hareketi */
+
+@keyframes hugWaiting{
+
+    0%,
+    100%{
+
+        transform:
+
+        scale(1);
+
+    }
+
+    50%{
+
+        transform:
+
+        scale(1.15);
+
+    }
+
+}
 
