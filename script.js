@@ -1123,6 +1123,8 @@ function animate(){
     
     updateMemoryOrbs();
 
+    updateHugGame();
+
     if(currentScene === 5){
 
     createFindGame();
