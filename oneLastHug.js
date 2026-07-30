@@ -4,6 +4,20 @@
 
 let hugStarted = false;
 
+let hugTouches = 0;
+
+const hugMessages = [
+
+    "Almosttt, YUUU",
+
+    "Catch me if you can",
+
+    "Catchh meee",
+
+    "One more timee... 💕"
+
+];
+
 /* Senin kontrol ettiğin kalp */
 
 let hugPlayerX = 0;
@@ -42,6 +56,8 @@ function startHugGame(){
     if(hugStarted) return;
 
     hugStarted = true;
+
+    hugTouches = 0;
 
 
     const player =
@@ -417,9 +433,9 @@ function updateHugGame(){
 
     if(distance < 75){
 
-        finishHugGame();
+    handleHugTouch();
 
-    }
+}
 
 }
 
@@ -427,6 +443,88 @@ function updateHugGame(){
 /* =================================
             SARILMA
 ================================= */
+
+function handleHugTouch(){
+
+    if(!hugStarted) return;
+
+    const text =
+
+    document.getElementById(
+
+        "hugText"
+
+    );
+
+    /* İlk 4 dokunuş */
+
+    if(
+
+        hugTouches <
+
+        hugMessages.length
+
+    ){
+
+        if(text){
+
+            text.textContent =
+
+            hugMessages[hugTouches];
+
+        }
+
+        hugTouches++;
+
+
+        /* Kalbi yeni bir yere kaçır */
+
+        hugYuX =
+
+        120 +
+
+        Math.random() *
+
+        (window.innerWidth - 240);
+
+
+        hugYuY =
+
+        180 +
+
+        Math.random() *
+
+        (window.innerHeight - 330);
+
+
+        /* Yeni yönde kaçmaya devam etsin */
+
+        hugYuVelocityX =
+
+        (Math.random() > .5 ? 1 : -1)
+
+        *
+
+        (3 + Math.random() * 2);
+
+
+        hugYuVelocityY =
+
+        (Math.random() > .5 ? 1 : -1)
+
+        *
+
+        (3 + Math.random() * 2);
+
+    }
+
+    else{
+
+        finishHugGame();
+
+    }
+
+}
 
 function finishHugGame(){
 
