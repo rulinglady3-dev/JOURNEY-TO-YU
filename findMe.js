@@ -7,20 +7,20 @@ let foundCount = 0;
 
 const findItems = [
 
-    // Sol üstte, yıldızların arasında
-    { id:"star", emoji:"⭐", x:75, y:260 },
+    // Yıldız: sol üstteki yıldız kümesinin içine
+    { id:"star", emoji:"⭐", x:410, y:220 },
 
-    // Sağ üst köşede
-    { id:"cat", emoji:"🐱", x:1120, y:90 },
+    // Kedi: sağdaki büyük pembe gezegenin kenarına
+    { id:"cat", emoji:"🐱", x:1125, y:340 },
 
-    // Sol alt tarafta
-    { id:"rose", emoji:"🌹", x:140, y:650 },
+    // Gül: soldaki mavi gezegenin yakınına
+    { id:"rose", emoji:"🌹", x:65, y:650 },
 
-    // Sağ alt köşeye yakın
-    { id:"letter", emoji:"💌", x:1080, y:590 },
+    // Mektup: sağ alttaki mor bulutun içine
+    { id:"letter", emoji:"💌", x:1050, y:610 },
 
-    // Ortaya yakın ama aşağıda
-    { id:"game", emoji:"🎮", x:730, y:500 }
+    // Oyun konsolu: alt ortadaki yıldızların arasına
+    { id:"game", emoji:"🎮", x:510, y:650 }
 
 ];
 
