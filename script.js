@@ -724,7 +724,7 @@ if(nextGameBtn){
 
     nextGameBtn.addEventListener("click",()=>{
 
-        showScene(6);
+        showScene(5);
 
     });
 
