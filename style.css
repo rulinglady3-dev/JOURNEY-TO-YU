@@ -1379,41 +1379,55 @@ body{
     rotate(20deg);
 }
 
-/* GİZLİ OBJELERİ DAHA ZOR BULUNUR YAP */
+
+/* FIND MEMORIES - GİZLİ OBJELER */
 
 .findObject{
+    position:absolute;
 
-    font-size:28px;
+    font-size:38px;
 
-    opacity:.22;
+    cursor:pointer;
+
+    user-select:none;
+
+    opacity:.55;
 
     filter:
 
     drop-shadow(
-        0 0 3px
-        rgba(255,255,255,.18)
+        0 0 5px
+        rgba(255,255,255,.35)
     );
 
+    transition:
+
+    transform .3s,
+
+    opacity .3s,
+
+    filter .3s;
+
+    z-index:20;
 }
 
-/* Üzerine gelince belli olsun */
+
+/* Fare objenin üstüne gelince */
 
 .findObject:hover{
-
     opacity:1;
 
     transform:
 
-    scale(1.35)
+    scale(1.2)
 
     rotate(8deg);
 
     filter:
 
     drop-shadow(
-        0 0 16px white
+        0 0 14px white
     );
-
 }
 
 
