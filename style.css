@@ -1057,27 +1057,335 @@ body{
     transform:scale(1.08);
 
 }
-/*==========================
-        FIND GAME
-==========================*/
+
+/* FIND MEMORIES - ANA ALAN */
+
+#findGame{
+    position:relative;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+
+    background:
+    radial-gradient(
+        circle at 50% 45%,
+        rgba(65,25,100,.35),
+        transparent 42%
+    );
+}
+
+#findTitle{
+    position:absolute;
+    top:35px;
+    left:50%;
+    transform:translateX(-50%);
+
+    z-index:50;
+
+    color:white;
+    font-size:42px;
+
+    text-shadow:
+    0 0 12px #ff8fd8,
+    0 0 30px #8d5cff;
+}
+
+#findTargets{
+    position:absolute;
+
+    top:105px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    gap:25px;
+
+    padding:12px 25px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:30px;
+
+    background:rgba(10,5,25,.45);
+
+    backdrop-filter:blur(10px);
+
+    z-index:50;
+}
+
+#findTargets span{
+    font-size:30px;
+    transition:.35s;
+}
 
 #findArea{
-
     position:absolute;
 
     inset:0;
 
     width:100%;
-
     height:100%;
 
+    overflow:hidden;
+}
+/* FIND MEMORIES - UZAY DEKORLARI */
+
+/* Mor uzay bulutları */
+
+.findNebula{
+    position:absolute;
+
+    width:420px;
+    height:260px;
+
+    border-radius:50%;
+
+    filter:blur(55px);
+
+    opacity:.30;
+
+    pointer-events:none;
 }
 
-.findObject{
+.nebulaOne{
+    top:190px;
+    left:-100px;
+
+    background:#a13cff;
+
+    transform:rotate(-20deg);
+}
+
+.nebulaTwo{
+    right:-120px;
+    bottom:70px;
+
+    background:#ff3ca6;
+
+    transform:rotate(25deg);
+}
+
+
+/* Büyük gezegenler */
+
+.findPlanet{
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    box-shadow:
+
+    inset -25px -25px 45px
+    rgba(0,0,0,.7),
+
+    inset 15px 15px 30px
+    rgba(255,255,255,.25),
+
+    0 0 50px
+    rgba(170,80,255,.35);
+}
+
+
+/* Sağdaki büyük pembe gezegen */
+
+.findPlanetOne{
+    width:230px;
+    height:230px;
+
+    top:220px;
+    right:-55px;
+
+    background:
+
+    radial-gradient(
+        circle at 30% 25%,
+        #ffb2e5,
+        #a83cff 45%,
+        #25104a 75%
+    );
+}
+
+
+/* Gezegenin halkası */
+
+.findPlanetOne::after{
+    content:"";
 
     position:absolute;
 
-    font-size:42px;
+    width:310px;
+    height:70px;
+
+    left:-40px;
+    top:75px;
+
+    border:
+
+    8px solid
+    rgba(255,180,240,.45);
+
+    border-radius:50%;
+
+    transform:
+    rotate(-18deg);
+}
+
+
+/* Soldaki küçük mavi gezegen */
+
+.findPlanetTwo{
+    width:150px;
+    height:150px;
+
+    left:-45px;
+    bottom:80px;
+
+    background:
+
+    radial-gradient(
+        circle at 30% 25%,
+        #b9f3ff,
+        #2870d8 50%,
+        #111d52 80%
+    );
+}
+/* FIND MEMORIES - UYDULAR VE YILDIZLAR */
+
+/* Küçük uydular */
+
+.findMoon{
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(
+        circle at 30% 25%,
+        #ffffff,
+        #b8a9d8 55%,
+        #4c3c72
+    );
+
+    box-shadow:
+    0 0 25px
+    rgba(255,255,255,.3);
+}
+
+
+/* Sol üstteki uydu */
+
+.moonOne{
+    width:70px;
+    height:70px;
+
+    top:300px;
+    left:250px;
+}
+
+
+/* Sağ alttaki küçük uydu */
+
+.moonTwo{
+    width:48px;
+    height:48px;
+
+    right:310px;
+    bottom:150px;
+}
+
+
+/* Yıldız kümeleri */
+
+.findStarCluster{
+    position:absolute;
+
+    color:white;
+
+    font-size:28px;
+
+    letter-spacing:12px;
+
+    opacity:.70;
+
+    text-shadow:
+
+    0 0 10px white,
+
+    0 0 20px #c57cff;
+
+    pointer-events:none;
+}
+
+
+/* Sol üst yıldız kümesi */
+
+.clusterOne{
+    top:210px;
+    left:380px;
+}
+
+
+/* Sağ orta yıldız kümesi */
+
+.clusterTwo{
+    right:350px;
+    top:480px;
+}
+
+
+/* Alt orta yıldız kümesi */
+
+.clusterThree{
+    left:480px;
+    bottom:90px;
+}
+/* FIND MEMORIES - UZAY BULUTLARI */
+
+.findCloud{
+    position:absolute;
+
+    width:220px;
+    height:70px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,180,245,.08);
+
+    filter:blur(18px);
+
+    pointer-events:none;
+}
+
+.cloudOne{
+    top:430px;
+    left:90px;
+
+    transform:
+    rotate(-15deg);
+}
+
+.cloudTwo{
+    right:100px;
+    top:170px;
+
+    transform:
+    rotate(20deg);
+}
+
+
+/* FIND MEMORIES - GİZLİ OBJELER */
+
+.findObject{
+    position:absolute;
+
+    font-size:38px;
 
     cursor:pointer;
 
@@ -1086,26 +1394,41 @@ body{
     opacity:.55;
 
     filter:
-    drop-shadow(0 0 7px rgba(255,255,255,.45));
+
+    drop-shadow(
+        0 0 5px
+        rgba(255,255,255,.35)
+    );
 
     transition:
+
     transform .3s,
-    opacity .3s;
+
+    opacity .3s,
+
+    filter .3s;
 
     z-index:20;
-
 }
+
+
+/* Fare objenin üstüne gelince */
 
 .findObject:hover{
-
     opacity:1;
 
-    transform:scale(1.15);
+    transform:
 
+    scale(1.2)
+
+    rotate(8deg);
+
+    filter:
+
+    drop-shadow(
+        0 0 14px white
+    );
 }
 
-#findTargets span{
 
-    transition:.3s;
 
-}
