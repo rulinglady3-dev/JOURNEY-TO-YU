@@ -7,15 +7,20 @@ let foundCount = 0;
 
 const findItems = [
 
-    { id:"star", emoji:"⭐", x:180, y:150 },
+    // Sol üstte, yıldızların arasında
+    { id:"star", emoji:"⭐", x:75, y:260 },
 
-    { id:"cat", emoji:"🐱", x:950, y:180 },
+    // Sağ üst köşede
+    { id:"cat", emoji:"🐱", x:1120, y:90 },
 
-    { id:"rose", emoji:"🌹", x:260, y:520 },
+    // Sol alt tarafta
+    { id:"rose", emoji:"🌹", x:140, y:650 },
 
-    { id:"letter", emoji:"💌", x:1050, y:430 },
+    // Sağ alt köşeye yakın
+    { id:"letter", emoji:"💌", x:1080, y:590 },
 
-    { id:"game", emoji:"🎮", x:650, y:640 }
+    // Ortaya yakın ama aşağıda
+    { id:"game", emoji:"🎮", x:730, y:500 }
 
 ];
 
