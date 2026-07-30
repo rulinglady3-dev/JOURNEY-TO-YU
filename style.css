@@ -1613,4 +1613,56 @@ body{
     }
 
 }
+/* ONE LAST HUG - KALPLERİ DÜZELT */
 
+#hugYou,
+#hugYu{
+
+    width:100px;
+
+    height:100px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    line-height:1;
+
+    font-family:
+    "Segoe UI Emoji",
+    "Apple Color Emoji",
+    sans-serif;
+
+}
+
+
+/* Parlak pembe kalp */
+
+#hugYou{
+
+    font-size:82px;
+
+    text-shadow:
+
+    0 0 12px #ff4db8,
+
+    0 0 30px #ff4db8,
+
+    0 0 55px #ff8bd5;
+
+}
+
+
+/* Normal kırmızı kalp */
+
+#hugYu{
+
+    font-size:78px;
+
+    text-shadow:
+
+    0 0 10px rgba(255,60,90,.5);
+
+}
