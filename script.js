@@ -1124,6 +1124,12 @@ function animate(){
     updateMemoryOrbs();
 
     updateHugGame();
+    
+    if(currentScene === 7){
+
+    startGoodbyeHearts();
+
+}
 
     if(currentScene === 5){
 
@@ -1134,3 +1140,145 @@ function animate(){
 }
 
 animate();
+/* =================================
+       GOODBYE - YÜKSELEN KALPLER
+================================= */
+
+let goodbyeHeartsStarted = false;
+
+
+function startGoodbyeHearts(){
+
+    if(goodbyeHeartsStarted) return;
+
+    goodbyeHeartsStarted = true;
+
+
+    const goodbyeScene =
+
+    document.getElementById(
+
+        "goodbyeScene"
+
+    );
+
+
+    if(!goodbyeScene) return;
+
+
+    setInterval(()=>{
+
+
+        if(currentScene !== 7) return;
+
+
+        const heart =
+
+        document.createElement(
+
+            "div"
+
+        );
+
+
+        heart.className =
+
+        "goodbyeHeart";
+
+
+        const hearts = [
+
+            "💕",
+
+            "💖",
+
+            "🤍",
+
+            "🩷",
+
+            "✨"
+
+        ];
+
+
+        heart.textContent =
+
+        hearts[
+
+            Math.floor(
+
+                Math.random()
+
+                *
+
+                hearts.length
+
+            )
+
+        ];
+
+
+        heart.style.left =
+
+        Math.random()
+
+        *
+
+        100
+
+        +
+
+        "%";
+
+
+        heart.style.fontSize =
+
+        18
+
+        +
+
+        Math.random()
+
+        *
+
+        25
+
+        +
+
+        "px";
+
+
+        heart.style.animationDuration =
+
+        5
+
+        +
+
+        Math.random()
+
+        *
+
+        5
+
+        +
+
+        "s";
+
+
+        goodbyeScene.appendChild(
+
+            heart
+
+        );
+
+
+        setTimeout(()=>{
+
+            heart.remove();
+
+        },10000);
+
+
+    },650);
+
+}
