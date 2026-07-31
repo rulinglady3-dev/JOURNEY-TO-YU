@@ -2552,9 +2552,9 @@ body{
     }
 
 }
-/* IPAD - HUG OYUNU DOKUNMATİK */
+/* IPAD / TELEFON - HUG OYUNU */
 
-#hugGame{
+#hugArea{
 
     width:100%;
 
@@ -2566,12 +2566,20 @@ body{
 
     user-select:none;
 
+    overflow:hidden;
+
 }
 
 
 #hugYou{
 
+    position:absolute;
+
     touch-action:none;
+
+    -webkit-user-select:none;
+
+    user-select:none;
 
     -webkit-user-drag:none;
 
