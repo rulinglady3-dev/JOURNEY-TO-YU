@@ -2565,12 +2565,14 @@ body{
     user-select:none;
 
 }
-
-
 #hugYou{
 
     touch-action:none;
 
-    pointer-events:none;
+    pointer-events:auto;
+
+    -webkit-user-drag:none;
+
+    user-select:none;
 
 }
