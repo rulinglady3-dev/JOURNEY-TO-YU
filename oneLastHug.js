@@ -119,7 +119,7 @@ function startHugGame(){
 
 function updateHugGame(){
 
-    if(currentScene !== 6) return;
+    if(currentScene !== 7) return;
 
 
     startHugGame();
@@ -784,8 +784,6 @@ function moveHugPlayer(e){
 
     const touch = e.touches[0];
 
-    const area = hugArea.getBoundingClientRect();
-
     const player = document.getElementById("hugYou");
 
     if(!player) return;
@@ -794,10 +792,6 @@ function moveHugPlayer(e){
     hugPlayerX =
 
     touch.clientX
-
-    -
-
-    area.left
 
     -
 
@@ -810,24 +804,18 @@ function moveHugPlayer(e){
 
     -
 
-    area.top
-
-    -
-
     player.offsetHeight / 2;
 
 
-    /* Kalp alanın dışına çıkmasın */
+    /* Kalp ekranın dışına çıkmasın */
 
     hugPlayerX = Math.max(
 
-        0,
+        40,
 
         Math.min(
 
-            area.width -
-
-            player.offsetWidth,
+            window.innerWidth - 100,
 
             hugPlayerX
 
@@ -838,13 +826,11 @@ function moveHugPlayer(e){
 
     hugPlayerY = Math.max(
 
-        0,
+        150,
 
         Math.min(
 
-            area.height -
-
-            player.offsetHeight,
+            window.innerHeight - 110,
 
             hugPlayerY
 
