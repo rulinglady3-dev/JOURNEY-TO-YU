@@ -1822,39 +1822,21 @@ body{
 
 #madeBy{
 
-    position:absolute;
+    font-size:22px;
 
-    left:50%;
+    color:rgba(255,255,255,.8);
 
-    bottom:28px;
-
-    transform:
-
-    translateX(-50%);
-
-    width:100%;
-
-    margin:0;
-
-    color:
-
-    rgba(255,255,255,.55);
-
-    font-size:16px;
-
-    letter-spacing:1px;
-
-    text-align:center;
-
-    z-index:20;
+    font-weight:600;
 
     text-shadow:
 
-    0 0 10px
+    0 0 10px #ff8bd5,
 
-    rgba(255,130,205,.3);
+    0 0 25px #ff4fb7;
 
 }
+
+    
 /* GOODBYE - YAZILARIN SIRALI GİRİŞİ */
 
 #goodbyeTitle,
@@ -2019,3 +2001,4 @@ body{
     }
 
 }
+
