@@ -745,32 +745,133 @@ window.addEventListener(
 
 });
 /* =================================
-      IPAD / TELEFON DOKUNMATİK
+   IPAD / TELEFON - HUG GAME TOUCH
 ================================= */
 
-window.addEventListener("touchstart", (e) => {
+const hugGameArea = document.getElementById("hugGame");
 
-    if(currentScene !== 6) return;
+if(hugGameArea){
 
-    const touch = e.touches[0];
+    hugGameArea.addEventListener(
 
-    hugPlayerX = touch.clientX - 35;
+        "touchstart",
 
-    hugPlayerY = touch.clientY - 35;
+        moveHugHeart,
 
-}, { passive:false });
+        { passive:false }
+
+    );
 
 
-window.addEventListener("touchmove", (e) => {
+    hugGameArea.addEventListener(
 
-    if(currentScene !== 6) return;
+        "touchmove",
+
+        moveHugHeart,
+
+        { passive:false }
+
+    );
+
+}
+
+
+function moveHugHeart(e){
 
     e.preventDefault();
 
-    const touch = e.touches[0];
 
-    hugPlayerX = touch.clientX - 35;
+    const player =
 
-    hugPlayerY = touch.clientY - 35;
+    document.getElementById(
 
-}, { passive:false });
+        "hugYou"
+
+    );
+
+
+    if(!player) return;
+
+
+    const touch =
+
+    e.touches[0];
+
+
+    const area =
+
+    hugGameArea.getBoundingClientRect();
+
+
+    hugPlayerX =
+
+    touch.clientX
+
+    -
+
+    area.left
+
+    -
+
+    player.offsetWidth / 2;
+
+
+    hugPlayerY =
+
+    touch.clientY
+
+    -
+
+    area.top
+
+    -
+
+    player.offsetHeight / 2;
+
+
+    /* Kalp ekran dışına çıkmasın */
+
+    hugPlayerX = Math.max(
+
+        0,
+
+        Math.min(
+
+            area.width -
+
+            player.offsetWidth,
+
+            hugPlayerX
+
+        )
+
+    );
+
+
+    hugPlayerY = Math.max(
+
+        0,
+
+        Math.min(
+
+            area.height -
+
+            player.offsetHeight,
+
+            hugPlayerY
+
+        )
+
+    );
+
+
+    player.style.left =
+
+    hugPlayerX + "px";
+
+
+    player.style.top =
+
+    hugPlayerY + "px";
+
+}
