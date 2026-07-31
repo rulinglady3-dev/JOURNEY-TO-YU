@@ -117,7 +117,11 @@ function startHugGame(){
           OYUNU GÜNCELLE
 ================================= */
 
-function updateHugGame(){
+if(typeof updateHugGame === "function"){
+
+    updateHugGame();
+
+}
 
     if(currentScene !== 7) return;
 
