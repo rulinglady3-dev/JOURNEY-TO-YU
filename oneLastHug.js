@@ -744,3 +744,33 @@ window.addEventListener(
     }
 
 });
+/* =================================
+      IPAD / TELEFON DOKUNMATİK
+================================= */
+
+window.addEventListener("touchstart", (e) => {
+
+    if(currentScene !== 6) return;
+
+    const touch = e.touches[0];
+
+    hugPlayerX = touch.clientX - 35;
+
+    hugPlayerY = touch.clientY - 35;
+
+}, { passive:false });
+
+
+window.addEventListener("touchmove", (e) => {
+
+    if(currentScene !== 6) return;
+
+    e.preventDefault();
+
+    const touch = e.touches[0];
+
+    hugPlayerX = touch.clientX - 35;
+
+    hugPlayerY = touch.clientY - 35;
+
+}, { passive:false });
