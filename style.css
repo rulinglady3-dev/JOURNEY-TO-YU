@@ -1666,3 +1666,30 @@ body{
     0 0 10px rgba(255,60,90,.5);
 
 }
+/* ONE LAST HUG - MESAJLARI BÜYÜT */
+
+#hugText{
+
+    font-size:38px;
+
+    font-weight:900;
+
+    color:#ff4fb7;
+
+    text-align:center;
+
+    width:100%;
+
+    text-shadow:
+
+    0 0 8px #ff8bd5,
+
+    0 0 20px #ff3fae,
+
+    0 0 40px #ff3fae;
+
+    letter-spacing:1px;
+
+    z-index:100;
+
+}
