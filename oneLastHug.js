@@ -745,29 +745,28 @@ window.addEventListener(
 
 });
 /* =================================
-   IPAD / TELEFON - HUG GAME TOUCH
+   IPAD / TELEFON - ONE LAST HUG
 ================================= */
 
-const hugGameArea = document.getElementById("hugGame");
+const hugArea = document.getElementById("hugArea");
 
-if(hugGameArea){
+if(hugArea){
 
-    hugGameArea.addEventListener(
+    hugArea.addEventListener(
 
         "touchstart",
 
-        moveHugHeart,
+        moveHugPlayer,
 
         { passive:false }
 
     );
 
-
-    hugGameArea.addEventListener(
+    hugArea.addEventListener(
 
         "touchmove",
 
-        moveHugHeart,
+        moveHugPlayer,
 
         { passive:false }
 
@@ -776,31 +775,20 @@ if(hugGameArea){
 }
 
 
-function moveHugHeart(e){
+function moveHugPlayer(e){
+
+    if(currentScene !== 7) return;
 
     e.preventDefault();
 
 
-    const player =
+    const touch = e.touches[0];
 
-    document.getElementById(
+    const area = hugArea.getBoundingClientRect();
 
-        "hugYou"
-
-    );
-
+    const player = document.getElementById("hugYou");
 
     if(!player) return;
-
-
-    const touch =
-
-    e.touches[0];
-
-
-    const area =
-
-    hugGameArea.getBoundingClientRect();
 
 
     hugPlayerX =
@@ -829,7 +817,7 @@ function moveHugHeart(e){
     player.offsetHeight / 2;
 
 
-    /* Kalp ekran dışına çıkmasın */
+    /* Kalp alanın dışına çıkmasın */
 
     hugPlayerX = Math.max(
 
