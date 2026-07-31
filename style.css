@@ -1816,27 +1816,7 @@ body{
     0 0 35px #ff3fae;
 
 }
-
-
-/* Sayfanın en altındaki yazı */
-
-#madeBy{
-
-    font-size:22px;
-
-    color:rgba(255,255,255,.8);
-
-    font-weight:600;
-
-    text-shadow:
-
-    0 0 10px #ff8bd5,
-
-    0 0 25px #ff4fb7;
-
-}
-
-    
+   
 /* GOODBYE - YAZILARIN SIRALI GİRİŞİ */
 
 #goodbyeTitle,
@@ -2001,4 +1981,36 @@ body{
     }
 
 }
+/* MADE BY YAZISI - SAYFANIN EN ALTINDA */
 
+#madeBy{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:28px;
+
+    transform:translateX(-50%);
+
+    width:100%;
+
+    margin:0;
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    color:rgba(255,255,255,.8);
+
+    text-shadow:
+
+    0 0 10px #ff8bd5,
+
+    0 0 25px #ff4fb7;
+
+    z-index:20;
+
+}
