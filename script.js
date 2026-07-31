@@ -1123,9 +1123,7 @@ function animate(){
     
     updateMemoryOrbs();
 
-    updateHugGame();
-    
-    if(currentScene === 7){
+if(currentScene === 7){
 
     startGoodbyeHearts();
 
