@@ -292,7 +292,7 @@ const touchText=document.getElementById("touchText");
 
 let introStarted=false;
 
-touchText.addEventListener("click",startJourney);
+touchText.addEventListener("pointerdown",startJourney);
 
 function startJourney(){
 
@@ -647,7 +647,7 @@ let openedMemories = 0;
         orb.style.left = (centerX + Math.cos(angle) * radius) + "px";
         orb.style.top = (centerY + Math.sin(angle) * radius) + "px";
 
-        orb.addEventListener("click", () => {
+        orb.addEventListener("pointerdown", () => {
 
             const rect = orb.getBoundingClientRect();
 
@@ -722,7 +722,7 @@ const nextGameBtn = document.getElementById("nextGameBtn");
 
 if(nextGameBtn){
 
-    nextGameBtn.addEventListener("click",()=>{
+    nextGameBtn.addEventListener("pointerdown",()=>{
 
         showScene(5);
 
@@ -732,7 +732,7 @@ if(nextGameBtn){
 
 if(closeMemory){
 
-    closeMemory.addEventListener("click", () => {
+    closeMemory.addEventListener("pointerdown", () => {
 
         const viewer = document.getElementById("memoryViewer");
         const card = document.getElementById("memoryCard");
@@ -854,6 +854,33 @@ window.addEventListener("keyup",(e)=>{
     }
 
 });
+/*=========================================================
+    HEART GAME - TOUCH / IPAD CONTROL
+=========================================================*/
+
+const heartGame = document.getElementById("heartGame");
+
+if(heartGame){
+
+    heartGame.addEventListener("pointerdown",(e)=>{
+
+        if(currentScene !== 3) return;
+
+        playerX = e.clientX;
+
+    });
+
+    heartGame.addEventListener("pointermove",(e)=>{
+
+        if(currentScene !== 3) return;
+
+        if(e.pointerType === "mouse" && e.buttons === 0) return;
+
+        playerX = e.clientX;
+
+    });
+
+}
 
 function updateHearts(){
 
