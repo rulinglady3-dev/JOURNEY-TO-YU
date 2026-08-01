@@ -50,14 +50,14 @@ let hugTouchActive = false;
            START GAME
 ================================= */
 
-function startHugGame(){
+function startHugGame() {
 
-    if(hugStarted) return;
+    if (hugStarted) return;
 
     const player = document.getElementById("hugYou");
     const yu = document.getElementById("hugYu");
 
-    if(!player || !yu) return;
+    if (!player || !yu) return;
 
     hugStarted = true;
     hugTouches = 0;
@@ -86,7 +86,6 @@ function startHugGame(){
 
     yu.style.right = "auto";
     yu.style.bottom = "auto";
-
 }
 
 
@@ -94,13 +93,16 @@ function startHugGame(){
           UPDATE HUG GAME
 ================================= */
 
-function updateHugGame(){
+function updateHugGame() {
 
-    /* Hug oyunu HTML'de scene7.
-       Dizideki sıra 0'dan başladığı için
-       currentScene değeri 6 olur. */
+    /*
+    scene7 HTML'deki yedinci sahne.
 
-    if(currentScene !== 6) return;
+    JavaScript'te sahneler 0'dan
+    başladığı için currentScene = 6.
+    */
+
+    if (currentScene !== 6) return;
 
 
     startHugGame();
@@ -109,71 +111,50 @@ function updateHugGame(){
     const player = document.getElementById("hugYou");
     const yu = document.getElementById("hugYu");
 
-    if(!player || !yu) return;
+    if (!player || !yu) return;
 
 
     /* =========================
          PLAYER MOVEMENT
     ========================= */
 
-    if(!hugTouchActive){
+    if (!hugTouchActive) {
 
-        if(hugMoveLeft){
-
+        if (hugMoveLeft) {
             hugPlayerX -= hugPlayerSpeed;
-
         }
 
-        if(hugMoveRight){
-
+        if (hugMoveRight) {
             hugPlayerX += hugPlayerSpeed;
-
         }
 
-        if(hugMoveUp){
-
+        if (hugMoveUp) {
             hugPlayerY -= hugPlayerSpeed;
-
         }
 
-        if(hugMoveDown){
-
+        if (hugMoveDown) {
             hugPlayerY += hugPlayerSpeed;
-
         }
-
     }
 
 
-    /* Ekran sınırları */
+    /* Ekran dışına çıkmasın */
 
     hugPlayerX = Math.max(
-
         0,
-
         Math.min(
-
             window.innerWidth - player.offsetWidth,
-
             hugPlayerX
-
         )
-
     );
 
 
     hugPlayerY = Math.max(
-
         145,
-
         Math.min(
-
             window.innerHeight - player.offsetHeight,
-
             hugPlayerY
-
         )
-
     );
 
 
@@ -183,29 +164,27 @@ function updateHugGame(){
 
     /* Klavyeyle hareket ederken eğilsin */
 
-    if(!hugTouchActive){
+    if (!hugTouchActive) {
 
-        if(hugMoveLeft){
+        if (hugMoveLeft) {
 
             player.style.transform =
-            "rotate(-12deg) scale(1.08)";
+                "rotate(-12deg) scale(1.08)";
 
         }
 
-        else if(hugMoveRight){
+        else if (hugMoveRight) {
 
             player.style.transform =
-            "rotate(12deg) scale(1.08)";
+                "rotate(12deg) scale(1.08)";
 
         }
 
-        else{
+        else {
 
             player.style.transform =
-            "scale(1)";
-
+                "scale(1)";
         }
-
     }
 
 
@@ -219,149 +198,98 @@ function updateHugGame(){
 
     /* Sağ ve sol duvar */
 
-    if(
-
-        hugYuX < 0
-
-        ||
-
-        hugYuX >
-        window.innerWidth - yu.offsetWidth
-
-    ){
+    if (
+        hugYuX < 0 ||
+        hugYuX > window.innerWidth - yu.offsetWidth
+    ) {
 
         hugYuVelocityX *= -1;
 
         hugYuX = Math.max(
-
             0,
-
             Math.min(
-
                 window.innerWidth - yu.offsetWidth,
-
                 hugYuX
-
             )
-
         );
-
     }
 
 
     /* Üst ve alt duvar */
 
-    if(
-
-        hugYuY < 145
-
-        ||
-
-        hugYuY >
-        window.innerHeight - yu.offsetHeight
-
-    ){
+    if (
+        hugYuY < 145 ||
+        hugYuY > window.innerHeight - yu.offsetHeight
+    ) {
 
         hugYuVelocityY *= -1;
 
         hugYuY = Math.max(
-
             145,
-
             Math.min(
-
                 window.innerHeight - yu.offsetHeight,
-
                 hugYuY
-
             )
-
         );
-
     }
 
 
     /* =========================
-       PLAYER'A YAKLAŞINCA KAÇ
+       PLAYER YAKLAŞINCA KAÇ
     ========================= */
 
     const distanceX =
-
         hugPlayerX - hugYuX;
 
-
     const distanceY =
-
         hugPlayerY - hugYuY;
 
 
     const distance = Math.sqrt(
-
-        distanceX * distanceX
-
-        +
-
+        distanceX * distanceX +
         distanceY * distanceY
-
     );
 
 
-    if(distance < 280){
+    if (distance < 280) {
 
         const safeDistance =
+            Math.max(distance, 1);
 
-            Math.max(distance,1);
 
+        /*
+        Kalbi oyuncunun ters yönüne
+        doğru hızlandırır.
+        */
 
         hugYuVelocityX +=
-
             (-distanceX / safeDistance)
-
-            *
-
-            0.16;
+            * 0.16;
 
 
         hugYuVelocityY +=
-
             (-distanceY / safeDistance)
-
-            *
-
-            0.16;
-
+            * 0.16;
     }
 
 
     /* Hız çok yükselmesin */
 
     hugYuVelocityX = Math.max(
-
         -7,
-
         Math.min(
-
             7,
-
             hugYuVelocityX
-
         )
-
     );
 
 
     hugYuVelocityY = Math.max(
-
         -7,
-
         Math.min(
-
             7,
-
             hugYuVelocityY
-
         )
-
     );
 
 
@@ -369,50 +297,31 @@ function updateHugGame(){
     yu.style.top = hugYuY + "px";
 
 
-    /* Kaçarken hafif dönsün */
+    /* Kaçarken dönsün */
 
     const angle =
-
         Math.atan2(
-
             hugYuVelocityY,
-
             hugYuVelocityX
-
         )
-
-        *
-
-        180
-
-        /
-
-        Math.PI;
+        * 180
+        / Math.PI;
 
 
     yu.style.transform =
-
         "rotate("
-
-        +
-
-        angle
-
-        +
-
-        "deg) scale(1.05)";
+        + angle
+        + "deg) scale(1.05)";
 
 
     /* =========================
             CATCH
     ========================= */
 
-    if(distance < 78){
+    if (distance < 78) {
 
         handleHugTouch();
-
     }
-
 }
 
 
@@ -421,179 +330,118 @@ function updateHugGame(){
 ================================= */
 
 const hugTouchArea =
-
     document.getElementById("hugArea");
 
 
-if(hugTouchArea){
+if (hugTouchArea) {
 
     hugTouchArea.addEventListener(
-
         "pointerdown",
-
         startHugTouch
-
     );
 
 
     hugTouchArea.addEventListener(
-
         "pointermove",
-
         moveHugTouch
-
     );
 
 
     hugTouchArea.addEventListener(
-
         "pointerup",
-
         endHugTouch
-
     );
 
 
     hugTouchArea.addEventListener(
-
         "pointercancel",
-
         endHugTouch
-
     );
-
 }
 
 
-function startHugTouch(e){
+function startHugTouch(e) {
 
-    if(currentScene !== 6) return;
+    if (currentScene !== 6) return;
 
     hugTouchActive = true;
 
 
-    if(
-
-        hugTouchArea.setPointerCapture
-
-    ){
+    if (hugTouchArea.setPointerCapture) {
 
         hugTouchArea.setPointerCapture(
-
             e.pointerId
-
         );
-
     }
 
 
     moveHugTouch(e);
-
 }
 
 
-function moveHugTouch(e){
+function moveHugTouch(e) {
 
-    if(
-
-        currentScene !== 6
-
-        ||
-
+    if (
+        currentScene !== 6 ||
         !hugTouchActive
-
     ) return;
 
 
     const player =
-
         document.getElementById(
-
             "hugYou"
-
         );
 
 
-    if(!player) return;
+    if (!player) return;
 
 
     hugPlayerX =
-
         e.clientX
-
-        -
-
-        player.offsetWidth / 2;
+        - player.offsetWidth / 2;
 
 
     hugPlayerY =
-
         e.clientY
-
-        -
-
-        player.offsetHeight / 2;
+        - player.offsetHeight / 2;
 
 
     hugPlayerX = Math.max(
-
         0,
-
         Math.min(
-
             window.innerWidth
-
-            -
-
-            player.offsetWidth,
-
+            - player.offsetWidth,
             hugPlayerX
-
         )
-
     );
 
 
     hugPlayerY = Math.max(
-
         145,
-
         Math.min(
-
             window.innerHeight
-
-            -
-
-            player.offsetHeight,
-
+            - player.offsetHeight,
             hugPlayerY
-
         )
-
     );
 
 
     player.style.left =
-
         hugPlayerX + "px";
 
 
     player.style.top =
-
         hugPlayerY + "px";
 
 
     player.style.transform =
-
         "scale(1.08)";
-
 }
 
 
-function endHugTouch(){
+function endHugTouch() {
 
     hugTouchActive = false;
-
 }
 
 
@@ -601,40 +449,29 @@ function endHugTouch(){
             CATCH MESSAGE
 ================================= */
 
-function handleHugTouch(){
+function handleHugTouch() {
 
-    if(!hugStarted) return;
+    if (!hugStarted) return;
 
 
     const text =
-
         document.getElementById(
-
             "hugText"
-
         );
 
 
-    if(
-
+    if (
         hugTouches
-
         <
-
         hugMessages.length
+    ) {
 
-    ){
-
-        if(text){
+        if (text) {
 
             text.textContent =
-
                 hugMessages[
-
                     hugTouches
-
                 ];
-
         }
 
 
@@ -644,108 +481,62 @@ function handleHugTouch(){
         /* Kalbi yeni yere kaçır */
 
         hugYuX =
-
             100
-
             +
-
             Math.random()
-
             *
-
             Math.max(
-
                 100,
-
                 window.innerWidth - 220
-
             );
 
 
         hugYuY =
-
             170
-
             +
-
             Math.random()
-
             *
-
             Math.max(
-
                 100,
-
                 window.innerHeight - 300
-
             );
 
 
+        /* Yeni yönde kaçmaya devam etsin */
+
         hugYuVelocityX =
-
             (
-
-                Math.random() > .5
-
-                ?
-
-                1
-
-                :
-
-                -1
-
+                Math.random() > 0.5
+                ? 1
+                : -1
             )
-
             *
-
             (
-
                 3
-
                 +
-
                 Math.random() * 2
-
             );
 
 
         hugYuVelocityY =
-
             (
-
-                Math.random() > .5
-
-                ?
-
-                1
-
-                :
-
-                -1
-
+                Math.random() > 0.5
+                ? 1
+                : -1
             )
-
             *
-
             (
-
                 3
-
                 +
-
                 Math.random() * 2
-
             );
 
     }
 
-    else{
+    else {
 
         finishHugGame();
-
     }
-
 }
 
 
@@ -753,84 +544,65 @@ function handleHugTouch(){
              FINISH
 ================================= */
 
-function finishHugGame(){
+function finishHugGame() {
 
-    if(!hugStarted) return;
+    if (!hugStarted) return;
 
 
     hugStarted = false;
-
     hugTouchActive = false;
 
 
     const player =
-
         document.getElementById(
-
             "hugYou"
-
         );
 
 
     const yu =
-
         document.getElementById(
-
             "hugYu"
-
         );
 
 
     const text =
-
         document.getElementById(
-
             "hugText"
-
         );
 
 
-    if(text){
+    if (text) {
 
         text.textContent =
-
             "You finally caught me 🤍";
-
     }
 
 
-    if(player){
+    if (player) {
 
         player.style.transition =
-
             "transform .5s";
 
         player.style.transform =
-
             "scale(1.35)";
-
     }
 
 
-    if(yu){
+    if (yu) {
 
         yu.style.transition =
-
             "transform .5s";
 
         yu.style.transform =
-
             "scale(1.35)";
-
     }
 
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
         showScene(7);
 
-    },2000);
-
+    }, 2000);
 }
 
 
@@ -842,69 +614,43 @@ window.addEventListener(
 
     "keydown",
 
-    (e)=>{
+    (e) => {
 
-        if(
-
-            e.key === "ArrowLeft"
-
-            ||
-
+        if (
+            e.key === "ArrowLeft" ||
             e.key === "a"
-
-        ){
+        ) {
 
             hugMoveLeft = true;
-
         }
 
 
-        if(
-
-            e.key === "ArrowRight"
-
-            ||
-
+        if (
+            e.key === "ArrowRight" ||
             e.key === "d"
-
-        ){
+        ) {
 
             hugMoveRight = true;
-
         }
 
 
-        if(
-
-            e.key === "ArrowUp"
-
-            ||
-
+        if (
+            e.key === "ArrowUp" ||
             e.key === "w"
-
-        ){
+        ) {
 
             hugMoveUp = true;
-
         }
 
 
-        if(
-
-            e.key === "ArrowDown"
-
-            ||
-
+        if (
+            e.key === "ArrowDown" ||
             e.key === "s"
-
-        ){
+        ) {
 
             hugMoveDown = true;
-
         }
-
     }
-
 );
 
 
@@ -912,67 +658,41 @@ window.addEventListener(
 
     "keyup",
 
-    (e)=>{
+    (e) => {
 
-        if(
-
-            e.key === "ArrowLeft"
-
-            ||
-
+        if (
+            e.key === "ArrowLeft" ||
             e.key === "a"
-
-        ){
+        ) {
 
             hugMoveLeft = false;
-
         }
 
 
-        if(
-
-            e.key === "ArrowRight"
-
-            ||
-
+        if (
+            e.key === "ArrowRight" ||
             e.key === "d"
-
-        ){
+        ) {
 
             hugMoveRight = false;
-
         }
 
 
-        if(
-
-            e.key === "ArrowUp"
-
-            ||
-
+        if (
+            e.key === "ArrowUp" ||
             e.key === "w"
-
-        ){
+        ) {
 
             hugMoveUp = false;
-
         }
 
 
-        if(
-
-            e.key === "ArrowDown"
-
-            ||
-
+        if (
+            e.key === "ArrowDown" ||
             e.key === "s"
-
-        ){
+        ) {
 
             hugMoveDown = false;
-
         }
-
     }
-
 );
